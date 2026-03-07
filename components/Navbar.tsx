@@ -12,7 +12,7 @@ export default function Navbar() {
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
       >
         <div className="text-sm font-semibold tracking-[0.3em] uppercase text-zinc-200">
-          Xinyi Dou · Diana
+          Xinyi Dou
         </div>
         <div className="flex items-center gap-4 text-xs font-medium text-zinc-400 sm:gap-6">
           <a
@@ -23,13 +23,13 @@ export default function Navbar() {
           </a>
           <a
             href="#projects"
-            className="transition-colors duration-300 hover:text-[#7affe7]"
+            className="transition-colors duration-300 hover:text-[#ffc7d7]"
           >
             Projects
           </a>
           <a
             href="#3d-showcase"
-            className="transition-colors duration-300 hover:text-[#ffc7d7]"
+            className="transition-colors duration-300 hover:text-[#7affe7]"
           >
             3D Showcase
           </a>

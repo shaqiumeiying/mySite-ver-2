@@ -8,7 +8,7 @@
     "videoUrl": "/videos/ice2.mp4",
     "demoUrl": "https://education.med.ubc.ca/projects/immersive-clinical-experience-2/",
     "date": "[04.26.2023]",
-    "type": "[INTERACTIVE EXPERIENCE]",
+    "type": "INTERACTIVE EXPERIENCE",
     "linkType": "internal"
   },
   {
@@ -19,7 +19,7 @@
     "imageUrl": "/images/projects/interactive_env.png",
     "videoUrl": "/videos/interactive_env.mp4",
     "date": "[ON GOING]",
-    "type": "Technical Art Experiment",
+    "type": "TECHNICAL ART EXPERIMENT",
     "linkType": "external",
     "externalUrl": ""
   },
@@ -31,7 +31,7 @@
     "imageUrl": "/images/projects/eco.png",
     "videoUrl": "/videos/EcoConvenienceStation_Demo.mp4",
     "date": "[09.12.2025]",
-    "type": "[INTERACTIVE INSTALLATION]",
+    "type": "INTERACTIVE INSTALLATION",
     "linkType": "external",
     "externalUrl": "https://github.com/shaqiumeiying/EcoConvenienceStationMiniGame"
   },
@@ -42,7 +42,7 @@
     "tags": ["Unity", "VR", "C#", "Hands-Free Interaction"],
     "imageUrl": "/images/projects/placeholder.png",
     "date": "[ON GOING]",
-    "type": "[INTERACTIVE EXPERIENCE]",
+    "type": "INTERACTIVE EXPERIENCE",
     "linkType": "external",
     "externalUrl": "https://thecdm.ca/projects/bravevr-preparing-courage-tandem-impact-collective"
   },
@@ -53,7 +53,7 @@
     "tags": ["Unreal Engine", "Blueprints", "3D Game", "VFX", "Ghibli-Style"],
     "imageUrl": "/images/projects/shroom.png",
     "date": "[ON GOING]",
-    "type": "[GAME]",
+    "type": "GAME",
     "linkType": "external",
     "externalUrl": "https://xinyidou.itch.io/shroomventure"
   },
@@ -65,7 +65,7 @@
     "imageUrl": "/images/projects/mita.png",
     "videoUrl": "/videos/mita.mp4", 
     "date": "[26.12.2024]", 
-    "type": "[MOTION GRAPHICS]",
+    "type": "MOTION GRAPHICS",
     "linkType": "https://www.douyin.com/user/MS4wLjABAAAADBkoPIpsjPx9AKik8ocAigMIovsjjiYHdESKKBr_FfA?from_tab_name=main&modal_id=7452635442077240615"
   },
   {
@@ -76,7 +76,7 @@
     "imageUrl": "/images/projects/gun_cat.png",
     "demoUrl": "https://aydenthekinch.itch.io/guncat",
     "date": "[23.04.2024]",
-    "type": "[GAME]",
+    "type": "GAME",
     "linkType": "external",
     "externalUrl": "https://github.com/shaqiumeiying/GunCatSampleCode"
   }
