@@ -1,0 +1,32 @@
+[
+  {
+    "year": "2025",
+    "title": "Ludum Dare 55 Jam Entry",
+    "builtWith": ["Unity", "C#", "2D", "Game Jam"],
+    "link": "https://example.com/ld55"
+  },
+  {
+    "year": "2025",
+    "title": "VR Spatial Audio Prototype",
+    "builtWith": ["Unity", "C#", "Oculus SDK", "SteamVR"],
+    "link": "https://example.com/vr-audio"
+  },
+  {
+    "year": "2024",
+    "title": "Procedural Cave Generator",
+    "builtWith": ["Unity", "C#", "Procedural Generation", "3D"],
+    "link": "https://example.com/cave-gen"
+  },
+  {
+    "year": "2024",
+    "title": "Global Game Jam: Mirror Mirror",
+    "builtWith": ["Unity", "Game Design", "Multiplayer", "C#"],
+    "link": "https://example.com/ggj24"
+  },
+  {
+    "year": "2023",
+    "title": "Hand-Tracking UX Experiments",
+    "builtWith": ["Unity", "VR", "Interaction Design", "Quest SDK"],
+    "link": "https://example.com/hand-tracking"
+  }
+]

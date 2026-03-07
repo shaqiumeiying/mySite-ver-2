@@ -1,0 +1,59 @@
+[
+  {
+    "id": "tails-of-courage",
+    "title": "Tails of Courage (Kourage)",
+    "description": "Hands-free VR experience designed for pediatric healthcare, using intuitive interaction to bring comfort and courage to young patients.",
+    "tags": ["Unity", "VR", "C#", "Interaction"],
+    "imageUrl": "/images/placeholder-1.jpg",
+    "demoUrl": "https://example.com/tails-of-courage",
+    "date": "[05.12.2025]",
+    "type": "[PROJECT]",
+    "linkType": "internal"
+  },
+  {
+    "id": "mushroom-picking-game",
+    "title": "Mushroom Picking Game",
+    "description": "A 3D game design final project focused on playful collecting, rhythm, and moment-to-moment feedback.",
+    "tags": ["Unity", "Game Design", "3D"],
+    "imageUrl": "/images/placeholder-2.jpg",
+    "demoUrl": "https://xinyidou.itch.io/shroomventure",
+    "date": "[12.08.2025]",
+    "type": "[PROJECT]",
+    "linkType": "external",
+    "externalUrl": "https://xinyidou.itch.io/shroomventure"
+  },
+  {
+    "id": "cybersouls",
+    "title": "CyberSouls",
+    "description": "Venture design and pitch for a digital legacy platform that explores memory, identity, and continuity in virtual space.",
+    "tags": ["UI/UX", "Venture Design", "Pitch"],
+    "imageUrl": "/images/placeholder-3.jpg",
+    "demoUrl": "https://example.com/cybersouls",
+    "date": "[22.03.2025]",
+    "type": "[PROTOTYPE]",
+    "linkType": "external",
+    "externalUrl": "https://xinyidou.itch.io/shroomventure"
+  },
+  {
+    "id": "respectfully-screw-you",
+    "title": "Respectfully, Screw You",
+    "description": "Collaborative level design project built around spatial storytelling, team communication, and multi-role coordination.",
+    "tags": ["Level Design", "Collaboration"],
+    "imageUrl": "/images/placeholder-4.jpg",
+    "demoUrl": "https://example.com/respectfully-screw-you",
+    "date": "[14.11.2024]",
+    "type": "[PROJECT]",
+    "linkType": "internal"
+  },
+  {
+    "id": "respectfullyaaaaaaaaaaa",
+    "title": "Respectfully, Screw You",
+    "description": "Collaborative level design project built around spatial storytelling, team communication, and multi-role coordination.",
+    "tags": ["Level Design", "Collaboration"],
+    "imageUrl": "/images/placeholder-4.jpg",
+    "demoUrl": "https://example.com/respectfully-screw-you",
+    "date": "[14.11.2024]",
+    "type": "[PROJECT]",
+    "linkType": "internal"
+  }
+]

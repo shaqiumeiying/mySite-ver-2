@@ -1,0 +1,218 @@
+"use client";
+
+import Link from "next/link";
+import { ArrowRight, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
+
+export type Project = {
+  id: string;
+  title: string;
+  description: string;
+  tags: string[];
+  imageUrl: string;
+  demoUrl: string;
+  date: string;
+  type: string;
+  linkType: "internal" | "external" | "none";
+  externalUrl?: string;
+};
+
+const isTallCard = (i: number) => i === 0;
+
+// // Make cards 0, 2, 4 tall 
+// const isTallCard = (i: number) => i % 2 === 0;
+// // Make only the first card tall
+// const isTallCard = (i: number) => i === 0;
+// // Make cards 1 and 3 tall instead
+// const isTallCard = (i: number) => i === 1 || i === 3;
+// // Make specific cards tall by listing indices
+// const isTallCard = (i: number) => [0, 2, 4].includes(i);
+// // Make no cards tall (all same height)
+// const isTallCard = (i: number) => false;
+
+const gridVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0 },
+};
+
+type ProjectsBentoProps = {
+  projects: Project[];
+};
+
+type CardWrapperProps = {
+  project: Project;
+  children: ReactNode;
+  isClickable: boolean;
+};
+
+function CardWrapper({ project, children, isClickable }: CardWrapperProps) {
+  const baseClasses =
+    "group relative block h-full overflow-hidden rounded-2xl border border-white/10 transition-all duration-300";
+  const hoverClasses = isClickable
+    ? "hover:border-[#7affe7]/30 hover:shadow-[0_0_30px_rgba(122,255,231,0.08)] cursor-pointer"
+    : "cursor-default";
+
+  if (project.linkType === "internal") {
+    return (
+      <Link href={`/projects/${project.id}`} className={`${baseClasses} ${hoverClasses}`}>
+        {children}
+      </Link>
+    );
+  }
+
+  if (project.linkType === "external" && project.externalUrl) {
+    return (
+      <a
+        href={project.externalUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${baseClasses} ${hoverClasses}`}
+      >
+        {children}
+      </a>
+    );
+  }
+
+  return <div className={`${baseClasses} ${hoverClasses}`}>{children}</div>;
+}
+
+export default function ProjectsBento({ projects }: ProjectsBentoProps) {
+  return (
+    <section id="projects" className="space-y-6">
+      <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end">
+        <div>
+          <h2 className="text-lg font-medium tracking-tight text-zinc-50 sm:text-xl">
+            Featured Projects
+          </h2>
+          <p className="mt-1 text-sm text-zinc-400">
+            A snapshot of Unity, VR, and interaction work across healthcare,
+            games, and product concepts.
+          </p>
+        </div>
+        <p className="text-xs uppercase tracking-[0.24em] text-zinc-500">
+          {projects.length.toString().padStart(2, "0")} Projects
+        </p>
+      </div>
+
+      <motion.div
+        className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6"
+        variants={gridVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-80px" }}
+      >
+        {projects.map((project, index) => {
+          const isClickable = project.linkType !== "none";
+
+          return (
+            <motion.div
+              key={project.id}
+              variants={cardVariants}
+              className={isTallCard(index) ? "md:row-span-2" : "md:row-span-1"}
+              whileHover={isClickable ? { y: -5, scale: 1.02 } : undefined}
+              transition={{ duration: 0.3 }}
+            >
+              <CardWrapper project={project} isClickable={isClickable}>
+                <div className={`flex h-full flex-col ${isTallCard(index) ? "min-h-[520px]" : "min-h-[380px]"}`}>
+                  {/* Media Section (Top 65-75%) */}
+                  <div className={`relative overflow-hidden ${isTallCard(index) ? "h-[72%]" : "h-[68%]"}`}>
+                    {project.imageUrl ? (
+                      <>
+                        <img
+                          src={project.imageUrl}
+                          alt={project.title}
+                          className={`h-full w-full object-cover transition-transform duration-700 ease-in-out ${isClickable ? "group-hover:scale-105" : ""}`}
+                          onError={(e) => {
+                            e.currentTarget.style.display = "none";
+                          }}
+                        />
+                        {/* Dynamic overlay - lights up on hover */}
+                        <div
+                          className={`absolute inset-0 bg-black/40 transition-colors duration-500 ${isClickable ? "group-hover:bg-transparent" : ""}`}
+                        />
+                      </>
+                    ) : (
+                      <div className="h-full w-full bg-gradient-to-br from-zinc-800 via-zinc-900 to-black" />
+                    )}
+
+                    {/* Date/Type badge overlay */}
+                    <div className="absolute left-4 top-4 flex gap-2">
+                      <span className="rounded-full bg-black/60 px-3 py-1 text-[10px] uppercase tracking-widest text-zinc-300 backdrop-blur-sm">
+                        {project.date}
+                      </span>
+                      <span className="rounded-full bg-black/60 px-3 py-1 text-[10px] uppercase tracking-widest text-zinc-300 backdrop-blur-sm">
+                        {project.type}
+                      </span>
+                    </div>
+
+                    {/* External link indicator */}
+                    {project.linkType === "external" && (
+                      <div className="absolute right-4 top-4">
+                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-black/60 text-zinc-400 backdrop-blur-sm transition-colors duration-300 group-hover:bg-[#ffc7d7]/20 group-hover:text-[#ffc7d7]">
+                          <ExternalLink className="h-4 w-4" />
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Content Section (Bottom 25-35%) */}
+                  <div className="flex flex-1 flex-col justify-between bg-zinc-950/80 px-5 py-4">
+                    <div>
+                      <h3 className="mb-1 text-lg font-bold text-white transition-colors duration-300 group-hover:text-zinc-50">
+                        {project.title}
+                      </h3>
+                      <p className={`text-xs leading-relaxed text-zinc-400 ${isTallCard(index) ? "line-clamp-3" : "line-clamp-2"}`}>
+                        {project.description}
+                      </p>
+                    </div>
+
+                    <div className="mt-3">
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        {project.tags.slice(0, isTallCard(index) ? 4 : 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full border border-[#7affe7]/20 bg-[#7affe7]/5 px-2.5 py-0.5 text-[9px] uppercase tracking-wide text-[#7affe7]/80 transition-colors duration-300 group-hover:border-[#7affe7]/40 group-hover:text-[#7affe7]"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                        {project.tags.length > (isTallCard(index) ? 4 : 3) && (
+                          <span className="text-[9px] text-zinc-500">
+                            +{project.tags.length - (isTallCard(index) ? 4 : 3)}
+                          </span>
+                        )}
+
+                        {/* Hover CTA */}
+                        {project.linkType === "internal" && (
+                          <span className="ml-auto flex items-center gap-1 text-xs text-zinc-500 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#7affe7] group-hover:opacity-100">
+                            Case Study
+                            <ArrowRight className="h-3 w-3" />
+                          </span>
+                        )}
+                        {project.linkType === "external" && (
+                          <span className="ml-auto flex items-center gap-1 text-xs text-zinc-500 opacity-0 transition-all duration-300 group-hover:text-[#ffc7d7] group-hover:opacity-100">
+                            Visit
+                            <ExternalLink className="h-3 w-3" />
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardWrapper>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </section>
+  );
+}
