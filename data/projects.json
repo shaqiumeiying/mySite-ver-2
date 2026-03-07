@@ -9,7 +9,7 @@
     "demoUrl": "https://education.med.ubc.ca/projects/immersive-clinical-experience-2/",
     "date": "[04.26.2023]",
     "type": "INTERACTIVE EXPERIENCE",
-    "linkType": "internal"
+    "linkType": "external"
   },
   {
     "id": "ethereal-breath-shaders",
@@ -41,6 +41,7 @@
     "description": "A hands-free VR experience for pediatric healthcare designed to prepare children for medical procedures through immersive and courageous storytelling.",
     "tags": ["Unity", "VR", "C#", "Hands-Free Interaction"],
     "imageUrl": "/images/projects/placeholder.png",
+    "demoUrl": "https://thecdm.ca/projects/bravevr-preparing-courage-tandem-impact-collective",
     "date": "[ON GOING]",
     "type": "INTERACTIVE EXPERIENCE",
     "linkType": "external",
@@ -52,10 +53,11 @@
     "description": "A Ghibli-inspired 3D exploration game built with Unreal Engine where players forage supernatural fungi in a meditative, stylized forest environment.",
     "tags": ["Unreal Engine", "Blueprints", "3D Game", "VFX", "Ghibli-Style"],
     "imageUrl": "/images/projects/shroom.png",
+    "demoUrl": "https://xinyidou.itch.io/shroomventure",
     "date": "[ON GOING]",
     "type": "GAME",
     "linkType": "external",
-    "externalUrl": "https://xinyidou.itch.io/shroomventure"
+    "externalUrl": "https://github.com/shaqiumeiying/ShroomVenture"
   },
   {
     "id": "viral-ae-animation",
@@ -64,9 +66,10 @@
     "tags": ["After Effects", "VFX", "Puppet Animation"],
     "imageUrl": "/images/projects/mita.png",
     "videoUrl": "/videos/mita.mp4", 
+    "demoUrl": "https://www.douyin.com/user/MS4wLjABAAAADBkoPIpsjPx9AKik8ocAigMIovsjjiYHdESKKBr_FfA?from_tab_name=main&modal_id=7452635442077240615",
     "date": "[26.12.2024]", 
     "type": "MOTION GRAPHICS",
-    "linkType": "https://www.douyin.com/user/MS4wLjABAAAADBkoPIpsjPx9AKik8ocAigMIovsjjiYHdESKKBr_FfA?from_tab_name=main&modal_id=7452635442077240615"
+    "linkType": "external"
   },
   {
     "id": "guncat",

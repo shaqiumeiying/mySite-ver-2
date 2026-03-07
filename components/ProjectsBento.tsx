@@ -75,6 +75,21 @@ function CardWrapper({ project, children, isClickable }: CardWrapperProps) {
     );
   }
 
+  if (project.linkType === "external" && (project.demoUrl || project.externalUrl)) {
+    const cardUrl = project.demoUrl || project.externalUrl!;
+    return (
+      <div
+        role="link"
+        tabIndex={0}
+        onClick={() => window.open(cardUrl, "_blank")}
+        onKeyDown={(e) => e.key === "Enter" && window.open(cardUrl, "_blank")}
+        className={`${baseClasses} ${hoverClasses}`}
+      >
+        {children}
+      </div>
+    );
+  }
+
   if (project.linkType === "external") {
     return <div className={`${baseClasses} ${hoverClasses}`}>{children}</div>;
   }
@@ -188,16 +203,19 @@ export default function ProjectsBento({ projects }: ProjectsBentoProps) {
                       </span>
                     </div>
 
-                    {/* Demo link (top right) - external only */}
-                    {project.linkType === "external" && project.demoUrl && (
+                    {/* Source pill (top right) - external only, expands on hover, links to source code */}
+                    {project.linkType === "external" && project.externalUrl && (
                       <a
-                        href={project.demoUrl}
+                        href={project.externalUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-black/60 text-zinc-400 backdrop-blur-sm transition-colors duration-300 hover:bg-[#ffc7d7]/20 hover:text-[#ffc7d7]"
                         onClick={(e) => e.stopPropagation()}
+                        className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center gap-2 overflow-hidden rounded-full bg-black/60 px-2 text-zinc-400 backdrop-blur-sm transition-[width,max-width,padding] duration-500 ease-out hover:w-auto hover:max-w-[160px] hover:px-3 [&>span]:opacity-0 [&>span]:transition-opacity [&>span]:duration-500 [&>span]:ease-out [&:hover>span]:opacity-100"
                       >
-                        <ExternalLink className="h-4 w-4" />
+                        <ExternalLink className="h-4 w-4 shrink-0" />
+                        <span className="whitespace-nowrap text-[10px] font-medium uppercase tracking-wider text-[#ffc7d7]">
+                          Source Code
+                        </span>
                       </a>
                     )}
                   </div>
@@ -236,16 +254,11 @@ export default function ProjectsBento({ projects }: ProjectsBentoProps) {
                             <ArrowRight className="h-3 w-3" />
                           </span>
                         )}
-                        {project.linkType === "external" && project.externalUrl && (
-                          <a
-                            href={project.externalUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="ml-auto flex items-center gap-1 text-xs text-zinc-500 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#ffc7d7] group-hover:opacity-100"
-                          >
-                            Visit
-                            <ExternalLink className="h-3 w-3" />
-                          </a>
+                        {project.linkType === "external" && (
+                          <span className="relative z-10 ml-auto flex items-center gap-1 text-xs text-zinc-500 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#ffc7d7] group-hover:opacity-100">
+                            Details
+                            <ArrowRight className="h-3 w-3" />
+                          </span>
                         )}
                       </div>
                     </div>
