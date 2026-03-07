@@ -22,16 +22,16 @@ export default function Navbar() {
             About
           </a>
           <a
-            href="#3d-showcase"
-            className="transition-colors duration-300 hover:text-[#ffc7d7]"
-          >
-            3D Showcase
-          </a>
-          <a
             href="#projects"
             className="transition-colors duration-300 hover:text-[#7affe7]"
           >
             Projects
+          </a>
+          <a
+            href="#3d-showcase"
+            className="transition-colors duration-300 hover:text-[#ffc7d7]"
+          >
+            3D Showcase
           </a>
         </div>
       </motion.nav>
