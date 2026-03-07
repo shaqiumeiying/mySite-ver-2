@@ -4,13 +4,14 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 
-type Project = {
+export type Project = {
   id: string;
   title: string;
   description: string;
   tags: string[];
-  imageUrl: string;
-  demoUrl: string;
+  imageUrl?: string;
+  videoUrl?: string;
+  demoUrl?: string;
   date: string;
   type: string;
   linkType: "internal" | "external" | "none";
@@ -41,15 +42,17 @@ export default function ProjectDetailContent({
             <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
             Back to Home
           </Link>
-          <a
-            href={project.demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-zinc-400 transition-colors duration-300 hover:text-[#ffc7d7]"
-          >
-            View Live
-            <ExternalLink className="h-4 w-4" />
-          </a>
+          {project.demoUrl && (
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-zinc-400 transition-colors duration-300 hover:text-[#ffc7d7]"
+            >
+              View Live
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          )}
         </div>
       </nav>
 
@@ -57,7 +60,7 @@ export default function ProjectDetailContent({
       <div className="relative h-[40vh] w-full overflow-hidden sm:h-[50vh] lg:h-[60vh]">
         <div className="absolute inset-0 bg-zinc-900">
           <img
-            src={project.imageUrl}
+            src={project.imageUrl ?? ""}
             alt={project.title}
             className="h-full w-full object-cover opacity-80"
             onError={(e) => {

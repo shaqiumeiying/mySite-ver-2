@@ -1,7 +1,9 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
-import TechInterlude from "./TechInterlude";
+
+const TechInterlude = dynamic(() => import("./TechInterlude"), { ssr: false });
 
 const DESKTOP_BREAKPOINT = 1024; // lg
 

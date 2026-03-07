@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import projects from "@/data/projects.json";
-import ProjectDetailContent from "@/components/ProjectDetailContent";
+import ProjectDetailContent, { type Project } from "@/components/ProjectDetailContent";
 
 type PageProps = {
   params: Promise<{ id: string }>;
@@ -36,5 +36,5 @@ export default async function ProjectPage({ params }: PageProps) {
     notFound();
   }
 
-  return <ProjectDetailContent project={project} />;
+  return <ProjectDetailContent project={project as Project} />;
 }
