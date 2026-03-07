@@ -1,4 +1,4 @@
-# Diana's Portfolio
+# Welcome to my Portfolio✨
 
 A modern, minimal personal portfolio—vibe-coded and rebuilt from the ground up. Migrated from [MySite](https://github.com/shaqiumeiying/MySite).
 
