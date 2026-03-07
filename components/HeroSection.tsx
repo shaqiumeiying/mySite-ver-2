@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, FileText } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -52,16 +52,14 @@ export default function HeroSection() {
           <span className="bg-gradient-to-r from-[#7affe7] to-[#ffc7d7] bg-clip-text text-transparent">
             Diana
           </span>
-          . Unity &amp; VR Developer.
+          . 
         </h1>
         <p className="text-sm leading-relaxed text-zinc-400 sm:text-base">
-          I build interactive experiences that sit at the intersection of{" "}
+            Building at the intersection of {" "}
           <span className="text-zinc-100">
-            technical systems, spatial design, and human emotion
+          software development, spatial design, and digital art 
           </span>
-          . From hands-free VR in healthcare to playful game prototypes, I
-          care about how mechanics, feedback, and pacing shape how people
-          feel in virtual worlds.
+          . I code the mechanics, but I paint the light.
         </p>
         <div className="flex flex-wrap items-center gap-3 pt-2">
           <a
@@ -88,6 +86,15 @@ export default function HeroSection() {
           >
             <Mail className="h-4 w-4 transition-colors duration-300 group-hover:text-[#7affe7]" />
             Email
+          </a>
+          <a
+            href="/docs/Xinyi_Dou_CV_Technical_Artist.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-950 px-3 py-1.5 text-xs font-medium text-zinc-200 transition-colors duration-300 hover:border-[#7affe7]/40 hover:bg-zinc-900"
+          >
+            <FileText className="h-4 w-4 transition-colors duration-300 group-hover:text-[#7affe7]" />
+            Resume
           </a>
         </div>
       </motion.div>

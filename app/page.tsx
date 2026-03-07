@@ -2,7 +2,7 @@ import archiveData from "@/data/archive.json";
 import projectsData from "@/data/projects.json";
 import HeroSection from "@/components/HeroSection";
 import ParticleBackground from "@/components/ParticleBackground";
-import TechInterlude from "@/components/TechInterlude";
+import TechInterludeDesktopOnly from "@/components/TechInterludeDesktopOnly";
 import ModelViewer from "@/components/ModelViewer";
 import Navbar from "@/components/Navbar";
 import ProjectArchive from "@/components/ProjectArchive";
@@ -20,9 +20,9 @@ export default function Home() {
         <Navbar />
         <main className="mx-auto flex min-h-screen max-w-5xl flex-col gap-24 px-4 pb-20 pt-24 sm:px-6 lg:px-8">
           <HeroSection />
-          <ModelViewer />
-          {/* <TechInterlude /> */}
+          <TechInterludeDesktopOnly />
           <ProjectsBento projects={projects} />
+          <ModelViewer />
           <ProjectArchive archive={archive} />
         </main>
       </div>

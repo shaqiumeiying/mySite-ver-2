@@ -1,32 +1,44 @@
 [
   {
-    "year": "2025",
-    "title": "Ludum Dare 55 Jam Entry",
-    "builtWith": ["Unity", "C#", "2D", "Game Jam"],
-    "link": "https://example.com/ld55"
+    "year": "2026",
+    "title": "My Site v2.0",
+    "builtWith": ["TypeScript","Three.js", "Cursor", "Netlify", "Vibe Coding"],
+    "link": "https://github.com/shaqiumeiying/mySite-ver-2"
   },
   {
     "year": "2025",
-    "title": "VR Spatial Audio Prototype",
-    "builtWith": ["Unity", "C#", "Oculus SDK", "SteamVR"],
-    "link": "https://example.com/vr-audio"
+    "title": "Respectfully, Screw You",
+    "builtWith": ["Unity", "C#"],
+    "link": "https://github.com/shaqiumeiying/Respectfully-Screw-You-Boss"
   },
   {
     "year": "2024",
-    "title": "Procedural Cave Generator",
-    "builtWith": ["Unity", "C#", "Procedural Generation", "3D"],
-    "link": "https://example.com/cave-gen"
+    "title": "My Site",
+    "builtWith": ["JavaScript", "Three.js", "React"],
+    "link": "https://github.com/shaqiumeiying/MySite"
   },
   {
     "year": "2024",
-    "title": "Global Game Jam: Mirror Mirror",
-    "builtWith": ["Unity", "Game Design", "Multiplayer", "C#"],
-    "link": "https://example.com/ggj24"
+    "title": "Simple Todo List",
+    "builtWith": ["JavaScript", "React"],
+    "link": "https://github.com/shaqiumeiying/Simple-Todo-list"
   },
   {
-    "year": "2023",
-    "title": "Hand-Tracking UX Experiments",
-    "builtWith": ["Unity", "VR", "Interaction Design", "Quest SDK"],
-    "link": "https://example.com/hand-tracking"
+    "year": "2024",
+    "title": "F1 Database Application",
+    "builtWith": ["PHP", "SQL", "Oracle"],
+    "link": "https://github.com/shaqiumeiying/F1-Database-Application"
+  },
+  {
+    "year": "2024",
+    "title": "My Flappy Bird Game",
+    "builtWith": ["Unity", "Aesprite"],
+    "link": "https://github.com/shaqiumeiying/My-Flappy-Game"
+  },
+  {
+    "year": "2024",
+    "title": "Underwater Scene: A Javascript Animation",
+    "builtWith": ["JavaScript"],
+    "link": "https://github.com/shaqiumeiying/Underwater-Scene---Javascript-Animation"
   }
 ]

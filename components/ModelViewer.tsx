@@ -74,7 +74,7 @@ function Model({ modelPath }: { modelPath: string }) {
 
 function LoadingFallback() {
   return (
-    <div className="absolute inset-0 flex items-center justify-center bg-zinc-950">
+    <div className="absolute inset-0 flex items-center justify-center bg-black">
       <div className="flex flex-col items-center gap-4">
         <div className="h-8 w-8 animate-spin rounded-full border-2 border-zinc-700 border-t-[#7affe7]" />
         <p className="text-sm tracking-widest text-zinc-500">
@@ -87,7 +87,7 @@ function LoadingFallback() {
 
 function ErrorFallback({ error }: { error?: string }) {
   return (
-    <div className="absolute inset-0 flex items-center justify-center bg-zinc-950">
+    <div className="absolute inset-0 flex items-center justify-center bg-black">
       <div className="flex flex-col items-center gap-4 px-6 text-center">
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-500/10">
           <span className="text-2xl">⚠️</span>
@@ -275,16 +275,33 @@ export default function ModelViewer() {
 
   return (
     <section id="3d-showcase" className="space-y-6" ref={containerRef}>
-      <div>
-        <h2 className="text-lg font-medium tracking-tight text-zinc-50 sm:text-xl">
-          Interactive 3D Exploration
-        </h2>
-        <p className="mt-1 text-sm text-zinc-400">
-          Drag to rotate · Scroll to zoom · Double-click to reset
-        </p>
+      <div className="rounded-xl bg-black/40 px-4 py-3 backdrop-blur-sm sm:px-5">
+      <h2 className="font-sora text-lg font-extrabold tracking-tighter text-zinc-50 sm:text-xl">
+      Code x Canvas
+      </h2>
+      <h3 className="font-sora mt-1 text-sm font-light leading-relaxed tracking-tight text-zinc-300">
+        A curated selection of technical 3D artifacts and experiments built with logic inside and soul outside. {" "} 
+        <span className="font-semibold bg-gradient-to-r from-[#7affe7] to-[#ffc7d7] bg-clip-text text-transparent">
+       Logic
+      </span>{" "}
+      inside and{" "}
+      <span className="font-semibold bg-gradient-to-r from-[#7affe7] to-[#ffc7d7] bg-clip-text text-transparent">
+       Soul
+      </span>{" "}
+      outside.
+      </h3>
+  
+      <p className="mt-2 text-[10px] font-medium uppercase tracking-widest text-zinc-500">
+      Drag to rotate · Scroll to zoom
+      </p>
       </div>
 
-      <div className="relative h-[400px] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-950 sm:h-[500px] lg:h-[600px]">
+      <div
+        className="relative h-[400px] w-full overflow-hidden rounded-2xl border border-white/5 bg-black sm:h-[500px] lg:h-[600px]"
+        style={{
+          boxShadow: "inset 0 0 20px rgba(122,255,231,0.05), inset 0 0 40px rgba(255,199,215,0.03), 0 0 1px rgba(122,255,231,0.2)",
+        }}
+      >
         {hasLoaded ? (
           <ErrorBoundary fallback={<ErrorFallback />}>
             <Suspense fallback={<LoadingFallback />}>
@@ -309,12 +326,13 @@ export default function ModelViewer() {
         )}
 
         {/* Subtle gradient overlay at edges */}
-        <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-zinc-950/60 via-transparent to-zinc-950/30" />
+        <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-black/50 via-transparent to-black/30" />
 
-        {/* Corner accent */}
-        <div className="absolute bottom-4 right-4 flex items-center gap-2 text-[10px] uppercase tracking-widest text-zinc-500">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#7affe7]/60" />
-          WebGL
+        {/* Technical status bar */}
+        <div className="absolute bottom-4 right-4 flex items-center gap-3 rounded-md bg-black/40 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-500 backdrop-blur-sm">
+          <span>RENDERER: WEBGL 2.0</span>
+          <span className="h-0.5 w-0.5 rounded-full bg-zinc-600" />
+          <span className="text-[#7affe7]/90">STATUS: ACTIVE</span>
         </div>
       </div>
     </section>

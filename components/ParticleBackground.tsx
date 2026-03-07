@@ -106,7 +106,7 @@ function ShootingStar({ initialDelay = 0 }: { initialDelay?: number }) {
   }, [viewport]);
 
   const scheduleRespawn = useCallback(() => {
-    const delay = 3000 + Math.random() * 7000;
+    const delay = 1500 + Math.random() * 3500;
     setTimeout(() => spawn(), delay);
   }, [spawn]);
 
@@ -262,7 +262,9 @@ export default function ParticleBackground() {
       >
         <ClearBackground />
         <StarField />
-        <ShootingStar initialDelay={2} />
+        <ShootingStar initialDelay={1} />
+        <ShootingStar initialDelay={3} />
+        <ShootingStar initialDelay={5} />
         <Rig mouseRef={mouseRef} />
         <EffectComposer enableNormalPass={false} multisampling={0}>
           <Bloom

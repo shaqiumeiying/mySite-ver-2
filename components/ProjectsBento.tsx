@@ -10,7 +10,8 @@ export type Project = {
   title: string;
   description: string;
   tags: string[];
-  imageUrl: string;
+  imageUrl?: string;
+  videoUrl?: string;
   demoUrl: string;
   date: string;
   type: string;
@@ -18,18 +19,8 @@ export type Project = {
   externalUrl?: string;
 };
 
-const isTallCard = (i: number) => i === 0;
-
-// // Make cards 0, 2, 4 tall 
-// const isTallCard = (i: number) => i % 2 === 0;
-// // Make only the first card tall
-// const isTallCard = (i: number) => i === 0;
-// // Make cards 1 and 3 tall instead
-// const isTallCard = (i: number) => i === 1 || i === 3;
-// // Make specific cards tall by listing indices
-// const isTallCard = (i: number) => [0, 2, 4].includes(i);
-// // Make no cards tall (all same height)
-// const isTallCard = (i: number) => false;
+/** First card: larger and wider (hero). Rest: smaller. */
+const isFirstCard = (i: number) => i === 0;
 
 const gridVariants = {
   hidden: { opacity: 0 },
@@ -94,8 +85,8 @@ export default function ProjectsBento({ projects }: ProjectsBentoProps) {
             Featured Projects
           </h2>
           <p className="mt-1 text-sm text-zinc-400">
-            A snapshot of Unity, VR, and interaction work across healthcare,
-            games, and product concepts.
+            A snapshot of work across interactive experiences,
+            games, and art concepts.
           </p>
         </div>
         <p className="text-xs uppercase tracking-[0.24em] text-zinc-500">
@@ -112,20 +103,39 @@ export default function ProjectsBento({ projects }: ProjectsBentoProps) {
       >
         {projects.map((project, index) => {
           const isClickable = project.linkType !== "none";
+          const isFirst = isFirstCard(index);
+          const gridClass = isFirst ? "md:col-span-2 md:row-span-2" : "md:col-span-1 md:row-span-1";
+          const minH = isFirst ? "min-h-[520px]" : "min-h-[340px]";
+          const mediaH = isFirst ? "h-[72%]" : "h-[68%]";
 
           return (
             <motion.div
               key={project.id}
               variants={cardVariants}
-              className={isTallCard(index) ? "md:row-span-2" : "md:row-span-1"}
+              className={gridClass}
               whileHover={isClickable ? { y: -5, scale: 1.02 } : undefined}
               transition={{ duration: 0.3 }}
             >
               <CardWrapper project={project} isClickable={isClickable}>
-                <div className={`flex h-full flex-col ${isTallCard(index) ? "min-h-[520px]" : "min-h-[380px]"}`}>
+                <div className={`flex h-full flex-col ${minH}`}>
                   {/* Media Section (Top 65-75%) */}
-                  <div className={`relative overflow-hidden ${isTallCard(index) ? "h-[72%]" : "h-[68%]"}`}>
-                    {project.imageUrl ? (
+                  <div className={`relative overflow-hidden ${mediaH}`}>
+                    {project.videoUrl ? (
+                      <>
+                        <video
+                          src={project.videoUrl}
+                          poster={project.imageUrl || undefined}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          className={`h-full w-full object-cover transition-transform duration-700 ease-in-out ${isClickable ? "group-hover:scale-105" : ""}`}
+                        />
+                        <div
+                          className={`absolute inset-0 bg-black/40 transition-colors duration-500 ${isClickable ? "group-hover:bg-transparent" : ""}`}
+                        />
+                      </>
+                    ) : project.imageUrl ? (
                       <>
                         <img
                           src={project.imageUrl}
@@ -135,7 +145,6 @@ export default function ProjectsBento({ projects }: ProjectsBentoProps) {
                             e.currentTarget.style.display = "none";
                           }}
                         />
-                        {/* Dynamic overlay - lights up on hover */}
                         <div
                           className={`absolute inset-0 bg-black/40 transition-colors duration-500 ${isClickable ? "group-hover:bg-transparent" : ""}`}
                         />
@@ -170,14 +179,14 @@ export default function ProjectsBento({ projects }: ProjectsBentoProps) {
                       <h3 className="mb-1 text-lg font-bold text-white transition-colors duration-300 group-hover:text-zinc-50">
                         {project.title}
                       </h3>
-                      <p className={`text-xs leading-relaxed text-zinc-400 ${isTallCard(index) ? "line-clamp-3" : "line-clamp-2"}`}>
+                      <p className="text-xs leading-relaxed text-zinc-400 line-clamp-3">
                         {project.description}
                       </p>
                     </div>
 
                     <div className="mt-3">
                       <div className="flex flex-wrap items-center gap-1.5">
-                        {project.tags.slice(0, isTallCard(index) ? 4 : 3).map((tag) => (
+                        {project.tags.slice(0, 4).map((tag) => (
                           <span
                             key={tag}
                             className="rounded-full border border-[#7affe7]/20 bg-[#7affe7]/5 px-2.5 py-0.5 text-[9px] uppercase tracking-wide text-[#7affe7]/80 transition-colors duration-300 group-hover:border-[#7affe7]/40 group-hover:text-[#7affe7]"
@@ -185,9 +194,9 @@ export default function ProjectsBento({ projects }: ProjectsBentoProps) {
                             {tag}
                           </span>
                         ))}
-                        {project.tags.length > (isTallCard(index) ? 4 : 3) && (
+                        {project.tags.length > 4 && (
                           <span className="text-[9px] text-zinc-500">
-                            +{project.tags.length - (isTallCard(index) ? 4 : 3)}
+                            +{project.tags.length - 4}
                           </span>
                         )}
 

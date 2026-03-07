@@ -112,14 +112,14 @@ export default function ProjectDetailContent({
                 Role
               </h3>
               <p className="text-sm text-zinc-200">
-                Lead Developer &amp; Interaction Designer
+                XR Developer &amp; 3D Environment Designer
               </p>
             </div>
             <div>
               <h3 className="mb-2 text-xs uppercase tracking-widest text-zinc-500">
                 Timeline
               </h3>
-              <p className="text-sm text-zinc-200">8 weeks · Fall 2025</p>
+              <p className="text-sm text-zinc-200">8 months · Spring 2023</p>
             </div>
             <div>
               <h3 className="mb-2 text-xs uppercase tracking-widest text-zinc-500">
@@ -137,14 +137,6 @@ export default function ProjectDetailContent({
                   )
                 )}
               </div>
-            </div>
-            <div>
-              <h3 className="mb-2 text-xs uppercase tracking-widest text-zinc-500">
-                Team
-              </h3>
-              <p className="text-sm text-zinc-200">
-                3 developers, 2 designers, 1 researcher
-              </p>
             </div>
           </aside>
 
@@ -215,22 +207,7 @@ export default function ProjectDetailContent({
               hummed gently when hovered, clicked satisfyingly when grabbed,
               and whooshed through space when thrown.
             </p>
-
-            <h2 className="mt-12 text-2xl font-semibold text-white">
-              Outcomes
-            </h2>
-            <p className="text-zinc-400">
-              The final build was tested with 24 participants across three
-              age groups. Key metrics showed a 40% reduction in failed
-              interactions compared to our baseline build, and qualitative
-              feedback consistently highlighted the &quot;magical&quot; feeling
-              of the experience.
-            </p>
-            <p className="text-zinc-400">
-              This project reinforced my belief that the best VR interactions
-              are invisible — they should feel like extensions of natural
-              movement rather than learned game mechanics.
-            </p>
+            
           </article>
         </motion.div>
       </div>
