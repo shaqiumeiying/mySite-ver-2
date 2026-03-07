@@ -3,7 +3,7 @@ import projectsData from "@/data/projects.json";
 import HeroSection from "@/components/HeroSection";
 import ParticleBackground from "@/components/ParticleBackground";
 import TechInterludeDesktopOnly from "@/components/TechInterludeDesktopOnly";
-import ModelViewer from "@/components/ModelViewer";
+import ModelViewerLazy from "@/components/ModelViewerLazy";
 import Navbar from "@/components/Navbar";
 import ProjectArchive from "@/components/ProjectArchive";
 import ProjectsBento, { type Project } from "@/components/ProjectsBento";
@@ -22,7 +22,7 @@ export default function Home() {
           <HeroSection />
           <TechInterludeDesktopOnly />
           <ProjectsBento projects={projects} />
-          <ModelViewer />
+          <ModelViewerLazy />
           <ProjectArchive archive={archive} />
         </main>
       </div>

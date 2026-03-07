@@ -232,6 +232,13 @@ function StarField() {
 
 export default function ParticleBackground() {
   const mouseRef = useRef({ x: 0, y: 0 });
+  const [tabVisible, setTabVisible] = useState(true);
+
+  useEffect(() => {
+    const handler = () => setTabVisible(document.visibilityState === "visible");
+    document.addEventListener("visibilitychange", handler);
+    return () => document.removeEventListener("visibilitychange", handler);
+  }, []);
 
   const handlePointerMove = useCallback((e: PointerEvent) => {
     const x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -251,6 +258,7 @@ export default function ParticleBackground() {
     >
       <Canvas
         camera={{ position: [0, 0, 1], fov: 75 }}
+        frameloop={tabVisible ? "always" : "never"}
         dpr={[1, 1.5]}
         gl={{
           alpha: true,

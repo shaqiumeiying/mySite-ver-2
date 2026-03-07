@@ -1,9 +1,24 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+
+const MOBILE_BREAKPOINT = 768;
+
+function usePrefersVideo() {
+  const [prefersVideo, setPrefersVideo] = useState(false);
+  useEffect(() => {
+    const mql = window.matchMedia(`(min-width: ${MOBILE_BREAKPOINT}px)`);
+    const update = () => setPrefersVideo(mql.matches);
+    update();
+    mql.addEventListener("change", update);
+    return () => mql.removeEventListener("change", update);
+  }, []);
+  return prefersVideo;
+}
 
 export type Project = {
   id: string;
@@ -77,6 +92,8 @@ function CardWrapper({ project, children, isClickable }: CardWrapperProps) {
 }
 
 export default function ProjectsBento({ projects }: ProjectsBentoProps) {
+  const prefersVideo = usePrefersVideo();
+
   return (
     <section id="projects" className="space-y-6">
       <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end">
@@ -120,7 +137,7 @@ export default function ProjectsBento({ projects }: ProjectsBentoProps) {
                 <div className={`flex h-full flex-col ${minH}`}>
                   {/* Media Section (Top 65-75%) */}
                   <div className={`relative overflow-hidden ${mediaH}`}>
-                    {project.videoUrl ? (
+                    {project.videoUrl && (prefersVideo || isFirst) ? (
                       <>
                         <video
                           src={project.videoUrl}
@@ -129,6 +146,7 @@ export default function ProjectsBento({ projects }: ProjectsBentoProps) {
                           muted
                           loop
                           playsInline
+                          preload="metadata"
                           className={`h-full w-full object-cover transition-transform duration-700 ease-in-out ${isClickable ? "group-hover:scale-105" : ""}`}
                         />
                         <div
@@ -140,6 +158,8 @@ export default function ProjectsBento({ projects }: ProjectsBentoProps) {
                         <img
                           src={project.imageUrl}
                           alt={project.title}
+                          loading={isFirst ? "eager" : "lazy"}
+                          decoding="async"
                           className={`h-full w-full object-cover transition-transform duration-700 ease-in-out ${isClickable ? "group-hover:scale-105" : ""}`}
                           onError={(e) => {
                             e.currentTarget.style.display = "none";
@@ -148,6 +168,20 @@ export default function ProjectsBento({ projects }: ProjectsBentoProps) {
                         <div
                           className={`absolute inset-0 bg-black/40 transition-colors duration-500 ${isClickable ? "group-hover:bg-transparent" : ""}`}
                         />
+                      </>
+                    ) : project.videoUrl && !prefersVideo && !isFirst && project.imageUrl ? (
+                      <>
+                        <img
+                          src={project.imageUrl}
+                          alt={project.title}
+                          loading={isFirst ? "eager" : "lazy"}
+                          decoding="async"
+                          className={`h-full w-full object-cover transition-transform duration-700 ease-in-out ${isClickable ? "group-hover:scale-105" : ""}`}
+                          onError={(e) => {
+                            e.currentTarget.style.display = "none";
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-black/40" />
                       </>
                     ) : (
                       <div className="h-full w-full bg-gradient-to-br from-zinc-800 via-zinc-900 to-black" />

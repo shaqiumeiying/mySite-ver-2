@@ -12,11 +12,35 @@
     "linkType": "internal"
   },
   {
+    "id": "ethereal-breath-shaders",
+    "title": "Interactive Environment Shader",
+    "description": "An experimental Unity ecosystem where custom vertex shaders allow foliage to respond dynamically to real-time user gaze and breath input.",
+    "tags": ["Shaders", "HLSL", "Gaze Tracking"],
+    "imageUrl": "/images/projects/interactive_env.png",
+    "videoUrl": "/videos/interactive_env.mp4",
+    "date": "[ON GOING]",
+    "type": "Technical Art Experiment",
+    "linkType": "external",
+    "externalUrl": ""
+  },
+  {
+    "id": "eco-convenience-station",
+    "title": "Eco-Gesture: Textile Recycling",
+    "description": "A gesture-controlled installation using Unity and Mediapipe that gamifies textile recycling through real-time computer vision and controller-free interaction.",
+    "tags": ["Computer Vision","Unity", "Mediapipe"],
+    "imageUrl": "/images/projects/eco.png",
+    "videoUrl": "/videos/EcoConvenienceStation_Demo.mp4",
+    "date": "[09.12.2025]",
+    "type": "[INTERACTIVE INSTALLATION]",
+    "linkType": "external",
+    "externalUrl": "https://github.com/shaqiumeiying/EcoConvenienceStationMiniGame"
+  },
+  {
     "id": "brave-vr-where-the-wind-leads",
     "title": "Brave VR: Where the Wind Leads",
     "description": "A hands-free VR experience for pediatric healthcare designed to prepare children for medical procedures through immersive and courageous storytelling.",
     "tags": ["Unity", "VR", "C#", "Hands-Free Interaction"],
-    "imageUrl": "/images/placeholder-3.jpg",
+    "imageUrl": "/images/projects/placeholder.png",
     "date": "[ON GOING]",
     "type": "[INTERACTIVE EXPERIENCE]",
     "linkType": "external",
@@ -34,32 +58,11 @@
     "externalUrl": "https://xinyidou.itch.io/shroomventure"
   },
   {
-    "id": "ethereal-breath-shaders",
-    "title": "Interactive Environment Shader",
-    "description": "An experimental Unity ecosystem where custom vertex shaders allow foliage to respond dynamically to real-time user gaze and breath input.",
-    "tags": ["Shaders", "HLSL", "Gaze Tracking"],
-    "videoUrl": "/videos/interactive_env.mp4",
-    "date": "[ON GOING]",
-    "type": "Technical Art Experiment",
-    "linkType": "external",
-    "externalUrl": ""
-  },
-  {
-    "id": "eco-convenience-station",
-    "title": "Eco-Gesture: Textile Recycling",
-    "description": "A gesture-controlled installation using Unity and Mediapipe that gamifies textile recycling through real-time computer vision and controller-free interaction.",
-    "tags": ["Computer Vision","Unity", "Mediapipe"],
-    "videoUrl": "/videos/EcoConvenienceStation_Demo.mp4",
-    "date": "[09.12.2025]",
-    "type": "[INTERACTIVE INSTALLATION]",
-    "linkType": "external",
-    "externalUrl": "https://github.com/shaqiumeiying/EcoConvenienceStationMiniGame"
-  },
-  {
     "id": "viral-ae-animation",
     "title": "Viral Fan Made Motion Art: Miside",
     "description": "A viral character animation project with over 3 million views, featuring custom digital illustrations and complex puppet-based VFX created in After Effects.",
     "tags": ["After Effects", "VFX", "Puppet Animation"],
+    "imageUrl": "/images/projects/mita.png",
     "videoUrl": "/videos/mita.mp4", 
     "date": "[26.12.2024]", 
     "type": "[MOTION GRAPHICS]",

@@ -49,7 +49,7 @@ export default function ProjectDetailContent({
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm text-zinc-400 transition-colors duration-300 hover:text-[#ffc7d7]"
             >
-              View Live
+              View Here
               <ExternalLink className="h-4 w-4" />
             </a>
           )}
