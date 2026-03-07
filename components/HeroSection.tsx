@@ -6,12 +6,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 const LOOP_PHOTOS = [
-  { src: "/images/FlappyD thumbnail.png", alt: "VR Simulation for UBC Medicine" },
-  { src: "/images/hero_oc1.png", alt: "Kourage VR Healthcare Experience" },
-  { src: "/images/myoc.png", alt: "Mushroom Picking Game Design" },
+  { src: "/images/photos/2.jpg", alt: "Hi, I'm Diana :3" },
+  { src: "/images/photos/3_.jpg", alt: "I love developing interactive experiences" },
+  { src: "/images/photos/4.jpg", alt: "I'm also very creative" },
+  { src: "/images/photos/5.png", alt: "I love painting and drawing!" },
+  { src: "/images/photos/6.png", alt: "Modeling is also fun!" },
+  { src: "/images/photos/7.png", alt: "My 3D modeled original characters..." },
+  { src: "/images/photos/8.jpg", alt: "Interactive experiences are my passion!" }
 ];
 
-const CYCLE_INTERVAL = 3000;
+const CYCLE_INTERVAL = 5000;
 
 export default function HeroSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -111,9 +115,9 @@ export default function HeroSection() {
             {LOOP_PHOTOS.map((photo, index) => {
               const stackPos = getStackPosition(index);
               const isActive = stackPos === 0;
-              const scale = 1 - stackPos * 0.06;
+              const scale = Math.max(0.5, 1 - stackPos * 0.06);
               const yOffset = stackPos * -8;
-              const opacity = 1 - stackPos * 0.2;
+              const opacity = Math.max(0.08, 1 - stackPos * 0.18);
               const zIndex = LOOP_PHOTOS.length - stackPos;
 
               return (
