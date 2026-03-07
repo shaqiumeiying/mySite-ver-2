@@ -12,7 +12,7 @@ export default function Navbar() {
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
       >
         <div className="text-sm font-semibold tracking-[0.3em] uppercase text-zinc-200">
-          Diana
+          Xinyi Dou · Diana
         </div>
         <div className="flex items-center gap-4 text-xs font-medium text-zinc-400 sm:gap-6">
           <a
