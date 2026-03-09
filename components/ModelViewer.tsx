@@ -189,7 +189,7 @@ function Scene({ modelPath }: { modelPath: string }) {
         
         {/* Simple contact shadows */}
         <ContactShadows
-          position={[0, -3.5, 0]}
+          position={[0, -5.5, 0]}
           opacity={0.5}
           scale={8}
           blur={2}
