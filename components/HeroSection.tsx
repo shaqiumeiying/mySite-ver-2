@@ -15,7 +15,7 @@ const LOOP_PHOTOS = [
   { src: "/images/photos/8.jpg", alt: "Interactive experiences are my passion!" }
 ];
 
-const CYCLE_INTERVAL = 5000;
+const CYCLE_INTERVAL = 3000;
 
 export default function HeroSection() {
   const [activeIndex, setActiveIndex] = useState(0);
