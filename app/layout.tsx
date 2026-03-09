@@ -10,8 +10,8 @@ const sora = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Diana | Portfolio",
-  description: "Diana · Unity & VR Developer Portfolio",
+  title: "Xinyi Dou | Portfolio",
+  description: "Welcome to my Portfolio",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

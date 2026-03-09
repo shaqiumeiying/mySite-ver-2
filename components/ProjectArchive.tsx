@@ -1,7 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import { ExternalLink } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 export type ArchiveEntry = {
   year: string;
@@ -15,9 +16,39 @@ type ProjectArchiveProps = {
 };
 
 export default function ProjectArchive({ archive }: ProjectArchiveProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { amount: 0.2 });
+
   return (
-    <section id="archive" className="space-y-6">
-      <div>
+    <section ref={sectionRef} id="archive" className="relative space-y-6">
+      {/* Decorative images - only visible when archive section is in view */}
+      <motion.div
+        className="pointer-events-none fixed inset-x-0 bottom-0 left-0 right-0 z-0 hidden w-full md:block"
+        initial={false}
+        animate={{ opacity: isInView ? 1 : 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        <motion.img
+          src="/images/deco-left.png"
+          alt=""
+          aria-hidden
+          className="absolute bottom-0 left-0 h-[clamp(20vh,65vh,75vh)] w-auto object-contain object-left-bottom opacity-40"
+          initial={{ opacity: 0, x: -40 }}
+          animate={isInView ? { opacity: 0.4, x: 0 } : { opacity: 0, x: -40 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        />
+        <motion.img
+          src="/images/deco-right.png"
+          alt=""
+          aria-hidden
+          className="absolute bottom-0 right-0 h-[clamp(20vh,65vh,75vh)] w-auto object-contain object-right-bottom opacity-40"
+          initial={{ opacity: 0, x: 40 }}
+          animate={isInView ? { opacity: 0.4, x: 0 } : { opacity: 0, x: 40 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        />
+      </motion.div>
+
+      <div className="relative z-10">
         <h2 className="text-lg font-medium tracking-tight text-zinc-50 sm:text-xl">
           Full Project Archive
         </h2>
@@ -27,7 +58,7 @@ export default function ProjectArchive({ archive }: ProjectArchiveProps) {
         </p>
       </div>
 
-      <div className="overflow-hidden rounded-xl border border-white/10">
+      <div className="relative z-10 overflow-hidden rounded-xl border border-white/10">
         {archive.map((entry, index) => (
           <motion.a
             key={entry.link}

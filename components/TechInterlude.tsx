@@ -13,13 +13,12 @@ const SKILLS = [
   { name: "Python", icon: "/icons/python.png" },
   { name: "C++", icon: "/icons/CP.png" },
   { name: "JavaScript", icon: "/icons/js.png" },
-  { name: "HTML", icon: "/icons/html.png" },
-  { name: "CSS", icon: "/icons/css.png" },
   { name: "R", icon: "/icons/R.png" },
   { name: "SQL", icon: "/icons/sql.png" },
-  { name: "MATLAB", icon: "/icons/matlab.png" },
-  { name: "Figma", icon: "/icons/figma.png" },
-  { name: "After Effects", icon: "/icons/ac.png" },
+  { name: "After Effects", icon: "/icons/adb.png" },
+  { name: "C#", icon: "/icons/csharp.png" },
+  { name: "TypeScript", icon: "/icons/ts.png" },
+  { name: "Unreal Engine", icon: "/icons/unreal.png" },
 ];
 
 

@@ -143,7 +143,7 @@ function FloatingRings() {
 
 function GridFloor() {
   return (
-    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2.5, 0]}>
+    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -3.5, 0]}>
       <planeGeometry args={[25, 25, 15, 15]} />
       <meshBasicMaterial 
         color="#ff8fa3" 
@@ -189,7 +189,7 @@ function Scene({ modelPath }: { modelPath: string }) {
         
         {/* Simple contact shadows */}
         <ContactShadows
-          position={[0, -2.4, 0]}
+          position={[0, -3.5, 0]}
           opacity={0.5}
           scale={8}
           blur={2}
