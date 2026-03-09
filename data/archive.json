@@ -19,12 +19,6 @@
   },
   {
     "year": "2024",
-    "title": "Simple Todo List",
-    "builtWith": ["JavaScript", "React"],
-    "link": "https://github.com/shaqiumeiying/Simple-Todo-list"
-  },
-  {
-    "year": "2024",
     "title": "F1 Database Application",
     "builtWith": ["PHP", "SQL", "Oracle"],
     "link": "https://github.com/shaqiumeiying/F1-Database-Application"
@@ -36,9 +30,15 @@
     "link": "https://github.com/shaqiumeiying/My-Flappy-Game"
   },
   {
-    "year": "2024",
+    "year": "2023",
     "title": "Underwater Scene: A Javascript Animation",
     "builtWith": ["JavaScript"],
     "link": "https://github.com/shaqiumeiying/Underwater-Scene---Javascript-Animation"
+  },
+  {
+    "year": "2023",
+    "title": "Simple Todo List",
+    "builtWith": ["JavaScript", "React"],
+    "link": "https://github.com/shaqiumeiying/Simple-Todo-list"
   }
 ]
