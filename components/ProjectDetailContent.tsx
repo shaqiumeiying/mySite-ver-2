@@ -276,17 +276,18 @@ export default function ProjectDetailContent({
             <ul className="space-y-2 text-zinc-400">
               <li>
                 <span className="text-[#7affe7]">Multimodal Input</span>{" "}
-                — Utilized <b>head-gaze</b> tracking and <b>IMU-based gestures</b> for navigation 
-                without hand controllers.
+                — Utilized <b>head-gaze</b> tracking, <b>IMU-based gestures</b> 
+                and <b>breath-based inputs</b> for navigation without hand controllers.
               </li>
               <li>
-                <span className="text-[#7affe7]">Respiratory Interaction</span>{" "}
-                — Integrated <b>breath-based inputs</b> to power environmental effects, 
-                subtly guiding patients toward calming breathing exercises.
+                <span className="text-[#7affe7]">Interactive Environment</span>{" "}
+                — Integrated <b>head-gaze</b> and <b>breath-based inputs</b> to 
+                power environmental effects, subtly guiding patients toward 
+                calming breathing exercises.
               </li>
               <li>
                 <span className="text-[#7affe7]">Optimization</span> —
-                Prioritized high-performance rendering to ensure a stable, 
+                Prioritized <b>high-performance rendering</b> to ensure a stable, 
                 nausea-free experience for vulnerable users.
               </li>
             </ul>
@@ -295,20 +296,22 @@ export default function ProjectDetailContent({
               Design Decisions
             </h2>
             <p className="text-zinc-400">
-              One of the most impactful decisions was shifting from direct
-              manipulation to what we called &quot;assisted agency.&quot;
-              Rather than requiring pixel-perfect precision, we implemented
-              smart snapping and trajectory prediction that made users feel
-              skillful while secretly providing assistance.
-            </p>
+            To facilitate a seamless experience in clinical settings, 
+            the design leverages <b>cognitive behavior therapy</b> through low-stress 
+            environmental puzzles that are strategically timed to coincide 
+            with procedural milestones, effectively shifting the child’s 
+            focus from the medical task to the narrative. This is 
+            complemented by <b>modular pacing</b>, featuring an adaptive story 
+            flow that allows healthcare providers to easily synchronize 
+            the VR experience with the specific duration of each procedure.
+            </p>  
             <p className="text-zinc-400">
-              The spatial audio design played an equally critical role.
-              We worked closely with our sound designer to create a 3D audio
-              landscape where every interaction had sonic feedback. Objects
-              hummed gently when hovered, clicked satisfyingly when grabbed,
-              and whooshed through space when thrown.
+            The <b>spatial audio design</b> also played an equally critical role.
+            We worked closely with our sound designer to create a 3D audio
+            landscape where every interaction had sonic feedback. Objects
+            hummed gently when hovered, clicked satisfyingly when grabbed,
+            and whooshed through space when thrown.
             </p>
-            
           </article>
         </motion.div>
       </div>
