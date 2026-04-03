@@ -228,7 +228,7 @@ export default function ProjectDetailContent({
                 Tools
               </h3>
               <div className="flex flex-wrap gap-2">
-                {["Unity 2022", "C#", "XR Toolkit", "Blender", "Figma"].map(
+                {["Unity 6000", "C#", "XR Toolkit", "Maya", "Substance Painter"].map(
                   (tool) => (
                     <span
                       key={tool}
