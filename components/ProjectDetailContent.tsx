@@ -1,8 +1,105 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
+
+const FOX_EMOJI_FILES = [
+  "Fox_Blushing.png",
+  "Fox_Cheer.png",
+  "Fox_Cooking.png",
+  "Fox_Cry.png",
+  "Fox_Fighting.png",
+  "Fox_Hype.png",
+  "Fox_InLove.png",
+  "Fox_Joy.png",
+  "Fox_Like.png",
+  "Fox_Love.png",
+  "Fox_Money.png",
+  "Fox_Question.png",
+  "Fox_Rage.png",
+  "Fox_Reading.png",
+  "Fox_Scared.png",
+  "Fox_Sick.png",
+  "Fox_Sleepy.png",
+  "Fox_Speechless.png",
+  "Fox_Sweatdrop.png",
+  "Fox_Thinking.png",
+  "Fox_Wave.png",
+  "Fox_Wink.png",
+  "Fox_Working.png",
+] as const;
+
+const FOX_EMOJI_SRCS = FOX_EMOJI_FILES.map(
+  (f) => `/images/projects/foxEmoji/${f}`
+);
+
+type FallItem = {
+  id: number;
+  src: string;
+  leftPct: number;
+  delay: number;
+  duration: number;
+  sizePx: number;
+  rotate: number;
+};
+
+function FoxEmojiFall() {
+  const [items, setItems] = useState<FallItem[] | null>(null);
+
+  useEffect(() => {
+    const count = 22;
+    setItems(
+      Array.from({ length: count }, (_, i) => ({
+        id: i,
+        src: FOX_EMOJI_SRCS[Math.floor(Math.random() * FOX_EMOJI_SRCS.length)]!,
+        leftPct: Math.random() * 94 + 3,
+        delay: Math.random() * 8,
+        duration: 10 + Math.random() * 14,
+        sizePx: 28 + Math.floor(Math.random() * 40),
+        rotate: (Math.random() - 0.5) * 40,
+      }))
+    );
+  }, []);
+
+  if (!items) return null;
+
+  return (
+    <div
+      className="pointer-events-none fixed inset-0 z-[1] overflow-hidden"
+      aria-hidden
+    >
+      {items.map((item) => (
+        <motion.img
+          key={item.id}
+          src={item.src}
+          alt=""
+          className="absolute top-0 h-auto -translate-x-1/2 select-none"
+          style={{
+            left: `${item.leftPct}%`,
+            width: item.sizePx,
+          }}
+          initial={{ y: "-15vh", opacity: 0, rotate: item.rotate }}
+          animate={{ y: "115vh", opacity: 0.65, rotate: item.rotate }}
+          transition={{
+            y: {
+              duration: item.duration,
+              delay: item.delay,
+              repeat: Infinity,
+              ease: "linear",
+            },
+            opacity: {
+              duration: 0.8,
+              delay: item.delay,
+            },
+            rotate: { duration: 0 },
+          }}
+        />
+      ))}
+    </div>
+  );
+}
 
 export type Project = {
   id: string;
@@ -30,8 +127,10 @@ export default function ProjectDetailContent({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="min-h-screen"
+      className="relative min-h-screen"
     >
+      <FoxEmojiFall />
+
       {/* Back Navigation */}
       <nav className="sticky top-0 z-50 border-b border-zinc-800/60 bg-black/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
@@ -57,7 +156,7 @@ export default function ProjectDetailContent({
       </nav>
 
       {/* Hero Image */}
-      <div className="relative h-[40vh] w-full overflow-hidden sm:h-[50vh] lg:h-[60vh]">
+      <div className="relative z-10 h-[40vh] w-full overflow-hidden sm:h-[50vh] lg:h-[60vh]">
         <div className="absolute inset-0 bg-zinc-900">
           <img
             src={project.imageUrl ?? ""}
@@ -73,7 +172,7 @@ export default function ProjectDetailContent({
       </div>
 
       {/* Header Content */}
-      <div className="relative z-10 mx-auto -mt-32 max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-20 mx-auto -mt-32 max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -101,7 +200,7 @@ export default function ProjectDetailContent({
       </div>
 
       {/* Two-Column Body */}
-      <div className="mx-auto max-w-6xl px-4 pb-24 sm:px-6 lg:px-8">
+      <div className="relative z-20 mx-auto max-w-6xl px-4 pb-24 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -115,14 +214,14 @@ export default function ProjectDetailContent({
                 Role
               </h3>
               <p className="text-sm text-zinc-200">
-                XR Developer &amp; 3D Environment Designer
+                XR Developer &amp; Level Designer / Programmer
               </p>
             </div>
             <div>
               <h3 className="mb-2 text-xs uppercase tracking-widest text-zinc-500">
                 Timeline
               </h3>
-              <p className="text-sm text-zinc-200">8 months · Spring 2023</p>
+              <p className="text-sm text-zinc-200">13 weeks · Spring 2026</p>
             </div>
             <div>
               <h3 className="mb-2 text-xs uppercase tracking-widest text-zinc-500">
@@ -148,48 +247,47 @@ export default function ProjectDetailContent({
             <p className="text-lg leading-relaxed text-zinc-300">
               {project.description}
             </p>
-
+            <h2 className="mt-12 text-2xl font-semibold text-white">
+              Introduction
+            </h2>
+            <p className="text-zinc-400">
+            Developed in collaboration with the <b>Centre for Digital Media</b> and <b>Tandem Impact Collective</b>, BraveVR 
+            is a narrative-driven experience designed to reduce medical anxiety 
+            for pediatric patients. It transforms high-stress clinical procedures 
+            into a calming "brave space" through interactive storytelling.
+            </p>
+                
             <h2 className="mt-12 text-2xl font-semibold text-white">
               The Challenge
             </h2>
             <p className="text-zinc-400">
-              Building immersive VR experiences requires balancing technical
-              constraints with emotional impact. For this project, we faced the
-              challenge of creating intuitive interactions that would feel
-              natural to first-time VR users while maintaining the depth needed
-              to engage returning players.
+            Designing for clinical settings requires solving for <b>restricted mobility</b> 
+            (due to medical equipment) and <b>high cognitive load</b>. 
+            The interface needed to be friction-less and accessible to children 
+            in physically constrained or stressful environments.
             </p>
-            <p className="text-zinc-400">
-              The core problem centered around spatial input: how do you design
-              interactions that leverage 6DOF controllers without overwhelming
-              users with complex gesture systems? We needed a solution that
-              would scale from simple pick-and-place mechanics to more
-              sophisticated manipulation tasks.
-            </p>
-
             <h2 className="mt-12 text-2xl font-semibold text-white">
               Technical Approach
             </h2>
             <p className="text-zinc-400">
-              Our Unity architecture was built around a modular interaction
-              system. We implemented a custom XR Interaction Manager that
-              extended Unity&apos;s XR Toolkit, adding support for:
+            I built a hands-free interaction framework in Unity to bypass 
+            physical limitations:
             </p>
             <ul className="space-y-2 text-zinc-400">
               <li>
-                <span className="text-[#7affe7]">Proximity-based feedback</span>{" "}
-                — Subtle haptic pulses and visual highlights as hands approach
-                interactable objects
+                <span className="text-[#7affe7]">Multimodal Input</span>{" "}
+                — Utilized <b>head-gaze</b> tracking and <b>IMU-based gestures</b> for navigation 
+                without hand controllers.
               </li>
               <li>
-                <span className="text-[#7affe7]">Contextual grab mechanics</span>{" "}
-                — Objects respond differently based on approach angle and
-                velocity
+                <span className="text-[#7affe7]">Respiratory Interaction</span>{" "}
+                — Integrated <b>breath-based inputs</b> to power environmental effects, 
+                subtly guiding patients toward calming breathing exercises.
               </li>
               <li>
-                <span className="text-[#7affe7]">Graceful degradation</span> —
-                Fallback interactions for users who struggle with precise
-                controller input
+                <span className="text-[#7affe7]">Optimization</span> —
+                Prioritized high-performance rendering to ensure a stable, 
+                nausea-free experience for vulnerable users.
               </li>
             </ul>
 

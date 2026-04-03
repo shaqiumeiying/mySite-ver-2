@@ -1,5 +1,17 @@
 [
   {
+    "id": "brave-vr-where-the-wind-leads",
+    "title": "Brave VR: Where the Wind Leads",
+    "description": "A hands-free VR experience for pediatric healthcare designed to prepare children for medical procedures through immersive and courageous storytelling.",
+    "tags": ["Unity", "VR", "C#", "Hands-Free Interaction", "Pediatric Healthcare", "Cognitive Behavioral Therapy"],
+    "imageUrl": "/images/projects/braveVR_Poster.png",
+    "videoUrl": "/videos/braveVR.mp4",
+    "date": "[04.02.2026]",
+    "type": "VR • INTERACTIVE EXPERIENCE",
+    "linkType": "internal",
+    "demoUrl": "https://thecdm.ca/projects/bravevr-preparing-courage-tandem-impact-collective"
+  },
+  {
     "id": "ice2-medical-vr",
     "title": "ICE 2: Immersive Clinical Experience",
     "description": "A high-fidelity VR medical simulation for UBC Faculty of Medicine featuring hand-tracking and voice-activated dictation to train emergency decision-making.",
@@ -8,7 +20,7 @@
     "videoUrl": "/videos/ice2.mp4",
     "demoUrl": "https://education.med.ubc.ca/projects/immersive-clinical-experience-2/",
     "date": "[04.26.2023]",
-    "type": "INTERACTIVE EXPERIENCE",
+    "type": "VR • INTERACTIVE EXPERIENCE",
     "linkType": "external"
   },
   {
@@ -36,25 +48,13 @@
     "externalUrl": "https://github.com/shaqiumeiying/EcoConvenienceStationMiniGame"
   },
   {
-    "id": "brave-vr-where-the-wind-leads",
-    "title": "Brave VR: Where the Wind Leads",
-    "description": "A hands-free VR experience for pediatric healthcare designed to prepare children for medical procedures through immersive and courageous storytelling.",
-    "tags": ["Unity", "VR", "C#", "Hands-Free Interaction"],
-    "imageUrl": "/images/projects/placeholder.png",
-    "demoUrl": "https://thecdm.ca/projects/bravevr-preparing-courage-tandem-impact-collective",
-    "date": "[ON GOING]",
-    "type": "INTERACTIVE EXPERIENCE",
-    "linkType": "external",
-    "externalUrl": "https://thecdm.ca/projects/bravevr-preparing-courage-tandem-impact-collective"
-  },
-  {
     "id": "shroomventure",
     "title": "ShroomVenture",
     "description": "A Ghibli-inspired 3D exploration game built with Unreal Engine where players forage supernatural fungi in a meditative, stylized forest environment.",
     "tags": ["Unreal Engine", "Blueprints", "3D Game", "VFX", "Ghibli-Style"],
     "imageUrl": "/images/projects/shroom.png",
     "demoUrl": "https://xinyidou.itch.io/shroomventure",
-    "date": "[ON GOING]",
+    "date": "[04.08.2026]",
     "type": "GAME",
     "linkType": "external",
     "externalUrl": "https://github.com/shaqiumeiying/ShroomVenture"
