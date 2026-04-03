@@ -214,7 +214,7 @@ export default function ProjectDetailContent({
                 Role
               </h3>
               <p className="text-sm text-zinc-200">
-                XR Developer &amp; Level Designer / Programmer
+                XR Developer &amp; Level Designer
               </p>
             </div>
             <div>
@@ -247,6 +247,19 @@ export default function ProjectDetailContent({
             <p className="text-lg leading-relaxed text-zinc-300">
               {project.description}
             </p>
+
+            <div className="not-prose my-10 overflow-hidden rounded-xl border border-white/10 bg-black shadow-[0_0_40px_rgba(0,0,0,0.45)]">
+              <video
+                src="/videos/braveTrailer.mp4"
+                controls
+                playsInline
+                preload="metadata"
+                className="aspect-video w-full bg-black object-contain"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
             <h2 className="mt-12 text-2xl font-semibold text-white">
               Introduction
             </h2>
@@ -305,13 +318,6 @@ export default function ProjectDetailContent({
             flow that allows healthcare providers to easily synchronize 
             the VR experience with the specific duration of each procedure.
             </p>  
-            <p className="text-zinc-400">
-            The <b>spatial audio design</b> also played an equally critical role.
-            We worked closely with our sound designer to create a 3D audio
-            landscape where every interaction had sonic feedback. Objects
-            hummed gently when hovered, clicked satisfyingly when grabbed,
-            and whooshed through space when thrown.
-            </p>
           </article>
         </motion.div>
       </div>
