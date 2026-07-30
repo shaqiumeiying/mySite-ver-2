@@ -264,7 +264,7 @@ export default function ProjectDetailContent({
               Introduction
             </h2>
             <p className="text-zinc-400">
-            Developed in collaboration with the <b>Centre for Digital Media</b> and <b>Tandem Impact Collective</b>, BraveVR 
+            Developed in collaboration with the <b>Centre for Digital Media</b> and Client, BraveVR 
             is a narrative-driven experience designed to reduce medical anxiety 
             for pediatric patients. It transforms high-stress clinical procedures 
             into a calming "brave space" through interactive storytelling.

@@ -33,7 +33,7 @@
     "date": "[ON GOING]",
     "type": "TECHNICAL ART EXPERIMENT",
     "linkType": "external",
-    "externalUrl": ""
+    "externalUrl": "https://github.com/shaqiumeiying/Interactive_Shader_Ethereal_Breathing"
   },
   {
     "id": "eco-convenience-station",
@@ -48,16 +48,28 @@
     "externalUrl": "https://github.com/shaqiumeiying/EcoConvenienceStationMiniGame"
   },
   {
-    "id": "shroomventure",
-    "title": "ShroomVenture",
-    "description": "A Ghibli-inspired 3D exploration game built with Unreal Engine where players forage supernatural fungi in a meditative, stylized forest environment.",
-    "tags": ["Unreal Engine", "Blueprints", "3D Game", "VFX", "Ghibli-Style"],
-    "imageUrl": "/images/projects/shroom.png",
+    "id": "shroomventure_2d",
+    "title": "ShroomVenture_Jump",
+    "description": "In this Unity-built 2D platformer demo, a curious pink piglet navigates a surreal, mushroom-filled dream world, collecting special items and solving puzzles to find a way back home.",
+    "tags": ["Unity", "Platformer", "2D Pixel Game"],
+    "imageUrl": "/images/projects/collect_shrooms.gif",
     "demoUrl": "https://xinyidou.itch.io/shroomventure",
-    "date": "[04.08.2026]",
+    "date": "[07.21.2025]",
     "type": "GAME",
     "linkType": "external",
     "externalUrl": "https://github.com/shaqiumeiying/ShroomVenture"
+  },
+  {
+    "id": "shroomventure_3d",
+    "title": "ShroomVenture_Maze",
+    "description": "A Ghibli-inspired 3D exploration game built with Unreal Engine where players forage supernatural fungi in a meditative, stylized forest environment.",
+    "tags": ["Unreal Engine", "Blueprints", "3D Game", "VFX", "Ghibli-Style"],
+    "imageUrl": "/images/projects/shroom.png",
+    "demoUrl": "https://www.youtube.com/watch?v=C1MmOCw_LtM",
+    "date": "[04.08.2026]",
+    "type": "GAME",
+    "linkType": "external",
+    "externalUrl": "https://github.com/shaqiumeiying/ShroomVenture_Maze"
   },
   {
     "id": "viral-ae-animation",
