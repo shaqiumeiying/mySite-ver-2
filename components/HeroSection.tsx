@@ -92,7 +92,7 @@ export default function HeroSection() {
             Email
           </a>
           <a
-            href="/docs/Xinyi_Dou_CV_Technical_Artist.pdf"
+            href="/docs/Diana_Dou_Resume_Ultimate.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-950 px-3 py-1.5 text-xs font-medium text-zinc-200 transition-colors duration-300 hover:border-[#7affe7]/40 hover:bg-zinc-900"

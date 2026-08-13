@@ -1,9 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
+import PairedPlatformGallery from "@/components/PairedPlatformGallery";
+import type { Project } from "@/data/types";
+
+export type { Project };
 
 const FOX_EMOJI_FILES = [
   "Fox_Blushing.png",
@@ -101,19 +105,16 @@ function FoxEmojiFall() {
   );
 }
 
-export type Project = {
-  id: string;
-  title: string;
-  description: string;
-  tags: string[];
-  imageUrl?: string;
-  videoUrl?: string;
-  demoUrl?: string;
-  date: string;
-  type: string;
-  linkType: "internal" | "external" | "none";
-  externalUrl?: string;
-};
+/** Renders `**bold**` segments within case-study text as <strong>. */
+function renderInline(text: string) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    return <Fragment key={i}>{part}</Fragment>;
+  });
+}
 
 type ProjectDetailContentProps = {
   project: Project;
@@ -158,14 +159,16 @@ export default function ProjectDetailContent({
       {/* Hero Image */}
       <div className="relative z-10 h-[40vh] w-full overflow-hidden sm:h-[50vh] lg:h-[60vh]">
         <div className="absolute inset-0 bg-zinc-900">
-          <img
-            src={project.imageUrl ?? ""}
-            alt={project.title}
-            className="h-full w-full object-cover opacity-80"
-            onError={(e) => {
-              e.currentTarget.style.display = "none";
-            }}
-          />
+          {project.imageUrl && (
+            <img
+              src={project.imageUrl}
+              alt={project.title}
+              className="h-full w-full object-cover opacity-80"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+              }}
+            />
+          )}
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
@@ -208,116 +211,146 @@ export default function ProjectDetailContent({
           className="grid gap-12 lg:grid-cols-[280px_1fr] lg:gap-16"
         >
           {/* Left Column - Context */}
-          <aside className="space-y-8">
-            <div>
-              <h3 className="mb-2 text-xs uppercase tracking-widest text-zinc-500">
-                Role
-              </h3>
-              <p className="text-sm text-zinc-200">
-                XR Developer &amp; Level Designer
-              </p>
-            </div>
-            <div>
-              <h3 className="mb-2 text-xs uppercase tracking-widest text-zinc-500">
-                Timeline
-              </h3>
-              <p className="text-sm text-zinc-200">13 weeks · Spring 2026</p>
-            </div>
-            <div>
-              <h3 className="mb-2 text-xs uppercase tracking-widest text-zinc-500">
-                Tools
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {["Unity 6000", "C#", "XR Toolkit", "Maya", "Substance Painter"].map(
-                  (tool) => (
-                    <span
-                      key={tool}
-                      className="rounded border border-zinc-700 px-2 py-0.5 text-xs text-zinc-400"
-                    >
-                      {tool}
-                    </span>
-                  )
-                )}
-              </div>
-            </div>
-          </aside>
+          {(project.role || project.timeline || (project.tools && project.tools.length > 0)) && (
+            <aside className="space-y-8">
+              {project.role && (
+                <div>
+                  <h3 className="mb-2 text-xs uppercase tracking-widest text-zinc-500">
+                    Role
+                  </h3>
+                  <p className="text-sm text-zinc-200">{project.role}</p>
+                </div>
+              )}
+              {project.timeline && (
+                <div>
+                  <h3 className="mb-2 text-xs uppercase tracking-widest text-zinc-500">
+                    Timeline
+                  </h3>
+                  <p className="text-sm text-zinc-200">{project.timeline}</p>
+                </div>
+              )}
+              {project.tools && project.tools.length > 0 && (
+                <div>
+                  <h3 className="mb-2 text-xs uppercase tracking-widest text-zinc-500">
+                    Tools
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tools.map((tool) => (
+                      <span
+                        key={tool}
+                        className="rounded border border-zinc-700 px-2 py-0.5 text-xs text-zinc-400"
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </aside>
+          )}
 
           {/* Right Column - Case Study */}
-          <article className="prose prose-invert prose-zinc max-w-none">
+          <article
+            className={`prose prose-invert prose-zinc max-w-none ${
+              project.role || project.timeline || project.tools ? "" : "lg:col-span-2"
+            }`}
+          >
             <p className="text-lg leading-relaxed text-zinc-300">
               {project.description}
             </p>
 
-            <div className="not-prose my-10 overflow-hidden rounded-xl border border-white/10 bg-black shadow-[0_0_40px_rgba(0,0,0,0.45)]">
-              <video
-                src="/videos/braveTrailer.mp4"
-                controls
-                playsInline
-                preload="metadata"
-                className="aspect-video w-full bg-black object-contain"
-              >
-                Your browser does not support the video tag.
-              </video>
-            </div>
+            {project.heroVideoUrl && (
+              <div className="not-prose my-10 overflow-hidden rounded-xl border border-white/10 bg-black shadow-[0_0_40px_rgba(0,0,0,0.45)]">
+                <video
+                  src={project.heroVideoUrl}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="aspect-video w-full bg-black object-contain"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            )}
 
-            <h2 className="mt-12 text-2xl font-semibold text-white">
-              Introduction
-            </h2>
-            <p className="text-zinc-400">
-            Developed in collaboration with the <b>Centre for Digital Media</b> and Client, BraveVR 
-            is a narrative-driven experience designed to reduce medical anxiety 
-            for pediatric patients. It transforms high-stress clinical procedures 
-            into a calming "brave space" through interactive storytelling.
-            </p>
-                
-            <h2 className="mt-12 text-2xl font-semibold text-white">
-              The Challenge
-            </h2>
-            <p className="text-zinc-400">
-            Designing for clinical settings requires solving for <b>restricted mobility</b> 
-            (due to medical equipment) and <b>high cognitive load</b>. 
-            The interface needed to be friction-less and accessible to children 
-            in physically constrained or stressful environments.
-            </p>
-            <h2 className="mt-12 text-2xl font-semibold text-white">
-              Technical Approach
-            </h2>
-            <p className="text-zinc-400">
-            I built a hands-free interaction framework in Unity to bypass 
-            physical limitations:
-            </p>
-            <ul className="space-y-2 text-zinc-400">
-              <li>
-                <span className="text-[#7affe7]">Multimodal Input</span>{" "}
-                — Utilized <b>head-gaze</b> tracking, <b>IMU-based gestures</b> 
-                and <b>breath-based inputs</b> for navigation without hand controllers.
-              </li>
-              <li>
-                <span className="text-[#7affe7]">Interactive Environment</span>{" "}
-                — Integrated <b>head-gaze</b> and <b>breath-based inputs</b> to 
-                power environmental effects, subtly guiding patients toward 
-                calming breathing exercises.
-              </li>
-              <li>
-                <span className="text-[#7affe7]">Optimization</span> —
-                Prioritized <b>high-performance rendering</b> to ensure a stable, 
-                nausea-free experience for vulnerable users.
-              </li>
-            </ul>
+            {project.pairedGallery && project.pairedGallery.length > 0 && (
+              <div className="not-prose my-10">
+                <h2 className="mb-4 text-2xl font-semibold text-white">
+                  VR × Mobile Walkthrough
+                </h2>
+                <PairedPlatformGallery pages={project.pairedGallery} />
+              </div>
+            )}
 
-            <h2 className="mt-12 text-2xl font-semibold text-white">
-              Design Decisions
-            </h2>
-            <p className="text-zinc-400">
-            To facilitate a seamless experience in clinical settings, 
-            the design leverages <b>cognitive behavior therapy</b> through low-stress 
-            environmental puzzles that are strategically timed to coincide 
-            with procedural milestones, effectively shifting the child’s 
-            focus from the medical task to the narrative. This is 
-            complemented by <b>modular pacing</b>, featuring an adaptive story 
-            flow that allows healthcare providers to easily synchronize 
-            the VR experience with the specific duration of each procedure.
-            </p>  
+            {project.gallery && project.gallery.length > 0 && (
+              <div className="not-prose my-10">
+                <h2 className="mb-4 text-2xl font-semibold text-white">
+                  Demos
+                </h2>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {project.gallery.map((item, i) => (
+                    <div
+                      key={i}
+                      className="overflow-hidden rounded-xl border border-white/10 bg-black shadow-[0_0_30px_rgba(0,0,0,0.4)]"
+                    >
+                      {item.type === "video" ? (
+                        <video
+                          src={item.src}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          preload="metadata"
+                          className="aspect-video w-full bg-black object-cover"
+                        />
+                      ) : (
+                        <img
+                          src={item.src}
+                          alt={item.caption ?? project.title}
+                          loading="lazy"
+                          className="aspect-video w-full bg-black object-cover"
+                        />
+                      )}
+                      {item.caption && (
+                        <p className="px-3 py-2 text-xs text-zinc-500">
+                          {item.caption}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {project.caseStudy?.map((section) => (
+              <div key={section.heading}>
+                <h2 className="mt-12 text-2xl font-semibold text-white">
+                  {section.heading}
+                </h2>
+                {section.paragraphs?.map((paragraph, i) => (
+                  <p key={i} className="text-zinc-400">
+                    {renderInline(paragraph)}
+                  </p>
+                ))}
+                {section.bullets && section.bullets.length > 0 && (
+                  <ul className="space-y-2 text-zinc-400">
+                    {section.bullets.map((bullet, i) => (
+                      <li key={i}>
+                        {bullet.label && (
+                          <>
+                            <span className="text-[#7affe7]">
+                              {bullet.label}
+                            </span>{" "}
+                            —{" "}
+                          </>
+                        )}
+                        {renderInline(bullet.text)}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
           </article>
         </motion.div>
       </div>

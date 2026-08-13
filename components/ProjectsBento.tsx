@@ -5,6 +5,9 @@ import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import type { Project } from "@/data/types";
+
+export type { Project };
 
 const MOBILE_BREAKPOINT = 768;
 
@@ -19,20 +22,6 @@ function usePrefersVideo() {
   }, []);
   return prefersVideo;
 }
-
-export type Project = {
-  id: string;
-  title: string;
-  description: string;
-  tags: string[];
-  imageUrl?: string;
-  videoUrl?: string;
-  demoUrl: string;
-  date: string;
-  type: string;
-  linkType: "internal" | "external" | "none";
-  externalUrl?: string;
-};
 
 /** First card: larger and wider (hero). Rest: smaller. */
 const isFirstCard = (i: number) => i === 0;

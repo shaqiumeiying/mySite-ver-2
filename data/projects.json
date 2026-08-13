@@ -1,15 +1,149 @@
 [
   {
+    "id": "coop-pediatric-vr-mobile",
+    "title": "Cross-Platform Cooperative Game: Pediatric Healthcare",
+    "description": "A cross-platform asymmetric two-player co-op puzzle game where a VR player and a Mobile player take on different roles and viewpoints to solve puzzles together. I owned the networking layer and the cross-platform architecture for a 6-person team.",
+    "tags": ["Unity 6", "C#", "Photon Fusion 2", "XR Interaction Toolkit", "Cross-Platform", "Pediatric Healthcare"],
+    "imageUrl": "/images/projects/TreenFox.png",
+    "videoUrl": "/videos/brave2Trailer.mp4",
+    "date": "[08.07.2026]",
+    "type": "VR + MOBILE • CO-OP EXPERIENCE",
+    "linkType": "internal",
+    "role": "Technical Lead / Lead Developer",
+    "timeline": "13 weeks · May 2026 – August 2026",
+    "tools": ["Unity 6", "C#", "Photon Fusion 2 (Shared Mode)", "XR Interaction Toolkit", "ParrelSync"],
+    "pairedGallery": [
+      {
+        "label": "Discovery - Puzzle 1",
+        "vr": { "src": "/videos/P1_VR.mp4" },
+        "mobile": { "src": "/videos/P1_Mobile.mp4" }
+      },
+      {
+        "label": "Agency - Puzzle 2",
+        "vr": { "src": "/videos/P2-VR.mp4" },
+        "mobile": { "src": "/videos/P2-Mobile.mp4" }
+      },
+      {
+        "label": "Confrontation - Puzzle 3",
+        "vr": { "src": "/videos/P3-VR.mp4" },
+        "mobile": { "src": "/videos/P3-Mobile.mp4" }
+      }
+    ],
+    "caseStudy": [
+      {
+        "heading": "Introduction",
+        "paragraphs": [
+          "This is a cross-platform asymmetric two-player co-op puzzle game pairing a **Meta Quest 3** VR player with an **Android** Mobile player, who take on different roles and viewpoints to solve puzzles together. As Technical Lead, I owned the networking layer and cross-platform architecture for a 6-person team, built on **Unity 6** and **Photon Fusion 2** (Shared Mode)."
+        ]
+      },
+      {
+        "heading": "The Challenge",
+        "paragraphs": [
+          "Building a real-time cooperative experience across two very different platforms meant the two clients could easily fight over game state. The system needed a single, unambiguous source of truth — without hardcoding an assumption about which device was hosting the session."
+        ]
+      },
+      {
+        "heading": "Networking Architecture",
+        "bullets": [
+          {
+            "label": "\"VR writes / Mobile reads\"",
+            "text": "Defined and enforced this core networking principle: the host always holds StateAuthority and writes `[Networked]` properties, while Mobile only sends RPCs to the host and reads state via ChangeDetector — eliminating state-authority conflicts at the architecture level."
+          },
+          {
+            "label": "Host ≠ VR Platform",
+            "text": "Established that authority is tied to the host regardless of device, so the system never assumes VR is always the host."
+          },
+          {
+            "label": "Single Source of Truth",
+            "text": "Drove all networked state through a single `[Networked]` phase enum, with dedicated action RPCs for player input and a two-flag `RPC_SegmentDone` handshake to advance passive phases."
+          },
+          {
+            "label": "Render-Only State Reads",
+            "text": "Read all networked state in `Render()` via ChangeDetector (never `Update()`) with teardown guards, and used one-shot host-to-all RPCs for transient feedback instead of phase transitions to avoid replayed dialogue and simulation stalls."
+          }
+        ]
+      },
+      {
+        "heading": "Systems & Engineering Practices",
+        "bullets": [
+          {
+            "label": "Decoupled Presentation Layer",
+            "text": "Decoupled the networking layer from presentation using static `GameEvents` (e.g. `OnSceneReady`, `OnPhaseChanged`) and a per-puzzle, per-platform bridge pattern (`Puzzle0XBridge_VR` / `_Mobile`) that drives dialogue, animation, and UI without touching networked state."
+          },
+          {
+            "label": "Scene & Audio Systems",
+            "text": "Architected the scene system with an additive loading structure, a persistent `_Main` scene, and transition orchestration, plus a cross-platform audio system (persistent AudioManager singleton, phase-driven SFX/BGM via SfxLibrary and AudioPhaseDriver)."
+          },
+          {
+            "label": "Conventions & Documentation",
+            "text": "Authored and enforced cross-platform naming and code conventions (`_VR` / `_Mobile` suffixes, `Handle` event-handler prefix, `RPC_` prefix, `TBD_` placeholders, `#if UNITY_EDITOR` debug guards) and wrote the technical design doc for handover."
+          },
+          {
+            "label": "Code Review",
+            "text": "Led code review as tech lead, reviewing VR-content and Mobile-UI PRs and clearly separating blocking from non-blocking items."
+          },
+          {
+            "label": "Testing",
+            "text": "Tested with a ParrelSync dual-editor setup (main editor as VR/host, clone as Mobile) and validated on real Quest 3 + Android devices."
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "brave-vr-where-the-wind-leads",
     "title": "Brave VR: Where the Wind Leads",
     "description": "A hands-free VR experience for pediatric healthcare designed to prepare children for medical procedures through immersive and courageous storytelling.",
     "tags": ["Unity", "VR", "C#", "Hands-Free Interaction", "Pediatric Healthcare", "Cognitive Behavioral Therapy"],
     "imageUrl": "/images/projects/braveVR_Poster.png",
-    "videoUrl": "/videos/braveVR.mp4",
     "date": "[04.02.2026]",
     "type": "VR • INTERACTIVE EXPERIENCE",
     "linkType": "internal",
-    "demoUrl": "https://thecdm.ca/projects/bravevr-preparing-courage-tandem-impact-collective"
+    "demoUrl": "https://thecdm.ca/projects/bravevr-preparing-courage-tandem-impact-collective",
+    "role": "XR Developer & Level Designer",
+    "timeline": "13 weeks · Spring 2026",
+    "tools": ["Unity 6000", "C#", "XR Toolkit", "Maya", "Substance Painter"],
+    "heroVideoUrl": "/videos/braveTrailer.mp4",
+    "caseStudy": [
+      {
+        "heading": "Introduction",
+        "paragraphs": [
+          "Developed in collaboration with the **Centre for Digital Media** and Client, BraveVR is a narrative-driven experience designed to reduce medical anxiety for pediatric patients. It transforms high-stress clinical procedures into a calming \"brave space\" through interactive storytelling."
+        ]
+      },
+      {
+        "heading": "The Challenge",
+        "paragraphs": [
+          "Designing for clinical settings requires solving for **restricted mobility** (due to medical equipment) and **high cognitive load**. The interface needed to be friction-less and accessible to children in physically constrained or stressful environments."
+        ]
+      },
+      {
+        "heading": "Technical Approach",
+        "paragraphs": [
+          "I built a hands-free interaction framework in Unity to bypass physical limitations:"
+        ],
+        "bullets": [
+          {
+            "label": "Multimodal Input",
+            "text": "Utilized **head-gaze** tracking, **IMU-based gestures** and **breath-based inputs** for navigation without hand controllers."
+          },
+          {
+            "label": "Interactive Environment",
+            "text": "Integrated **head-gaze** and **breath-based inputs** to power environmental effects, subtly guiding patients toward calming breathing exercises."
+          },
+          {
+            "label": "Optimization",
+            "text": "Prioritized **high-performance rendering** to ensure a stable, nausea-free experience for vulnerable users."
+          }
+        ]
+      },
+      {
+        "heading": "Design Decisions",
+        "paragraphs": [
+          "To facilitate a seamless experience in clinical settings, the design leverages **cognitive behavior therapy** through low-stress environmental puzzles that are strategically timed to coincide with procedural milestones, effectively shifting the child's focus from the medical task to the narrative. This is complemented by **modular pacing**, featuring an adaptive story flow that allows healthcare providers to easily synchronize the VR experience with the specific duration of each procedure."
+        ]
+      }
+    ]
   },
   {
     "id": "ice2-medical-vr",
